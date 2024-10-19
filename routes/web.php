@@ -50,37 +50,31 @@ Route::get('route-seven/{id}',function($id){
 Route::get('route-eight/{id}/{name}',function($id,$name){
     return "The first parameter is: " .$id . " and the second parameter is: " . $name;
 });
-
 Route::get('route-nine/{id?}',function($id=0){
     return "The parameter used is " . $id;
 });
-
 Route::get('route-ten',function(){
     return "hello";
 })->name('my-route');
-
-
-
 //method 1 recommended
 Route::get('route-eleven',[BasicController::class,'myfunction1']);
-
 //method 2
 Route::get('route-twelve','App\Http\Controllers\BasicController@myfunction2');
-
 //not recommended
 Route::get('route-13',[
    'uses'=> 'App\Http\Controllers\BasicController@myfunction2',
     'as'=>'my-second-route'
 ]);
-
 Route::get('route-14/{id}',[BasicController::class,'myfunction3']);
-
 Route::resource('product',ResourceController::class);
 Route::resource('product1',ResourceController::class)->only(['index','create']);
 Route::resource('product2',ResourceController::class)->except(['index']);
-
-
 Route::apiResource('api-resource',ApiController::class);
-
-
 Route::get('route-15',invokableController::class);
+
+Route::post('route-16',[BasicController::class,'myfunction4']);
+Route::put('route-17',[BasicController::class,'myfunction4']);
+Route::patch('route-18',[BasicController::class,'myfunction4']);
+Route::delete('route-19',[BasicController::class,'myfunction4']);
+
+

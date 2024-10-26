@@ -5,6 +5,8 @@ use App\Http\Controllers\BasicController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\invokableController;
+use App\Http\Controllers\RelationshipController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -76,5 +78,12 @@ Route::post('route-16',[BasicController::class,'myfunction4']);
 Route::put('route-17',[BasicController::class,'myfunction4']);
 Route::patch('route-18',[BasicController::class,'myfunction4']);
 Route::delete('route-19',[BasicController::class,'myfunction4']);
+
+Route::get('getBooksFromAuthor',[RelationshipController::class,'getBooksFromAuthor']);
+Route::get('getAuthorFromBook',[RelationshipController::class,'getAuthorFromBook']);
+Route::get('getDetailsFromBook',[RelationshipController::class,'getDetailsFromBook']);
+Route::get('getBookFromDetail',[RelationshipController::class,'getBookFromDetail']);
+Route::get('getBooksFromReader',[RelationshipController::class,'getBooksFromReader']);
+Route::get('getReadersFromBook',[RelationshipController::class,'getReadersFromBook']);
 
 

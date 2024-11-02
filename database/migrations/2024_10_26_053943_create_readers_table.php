@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('readers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('balance');
+            $table->boolean('is_editor');
             $table->timestamps();
         });
     }

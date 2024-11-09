@@ -218,4 +218,38 @@ class ReaderController extends Controller
         return response()->json(['msg'=>'created']);
     }
 
+    function updateReader1(Request $request, $id){
+        $data = Reader::find($id);
+        $data->name=$request->name;
+        $data->balance= $request->balance;
+        $data->is_editor=$request->is_editor;
+        $data->save();
+        return response()->json(['msg'=>'updated']);
+    }
+
+    function updateReader2(Request $request,$id){
+        $data = Reader::find($id);
+        $data->fill($request->all());
+        $data->save();
+        return response()->json(['msg'=>'updated']);
+    }
+
+    function massUpdate(){
+        $data= Reader::where('is_editor',0)
+            ->update(['balance'=>10000,'name'=>"My Reader"]);
+        return response()->json(['msg'=>'updated']);
+    }
+
+    function delete($id){
+        $data = Reader::find($id);
+        $data->delete();
+        return response()->json(['msg'=>'deleted']);
+    }
+
+    function massDelete()
+    {
+        Reader::where('is_editor',0)
+            ->delete();
+        return response()->json(['msg'=>'deleted']);
+    }
 }

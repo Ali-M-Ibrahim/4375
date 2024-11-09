@@ -7,6 +7,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\invokableController;
 use App\Http\Controllers\RelationshipController;
 use App\Http\Controllers\ReaderController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ViewController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -115,6 +118,22 @@ Route::post('addReader2',[ReaderController::class,'addReader2']);
 Route::get('addReader3',[ReaderController::class,'addReader3']);
 Route::post('addReader4',[ReaderController::class,'addReader4']);
 Route::post('addReader5',[ReaderController::class,'addReader5']);
+Route::put('updateReader1/{id}',[ReaderController::class,'updateReader1']);
+Route::put('updateReader2/{id}',[ReaderController::class,'updateReader2']);
+Route::get('massUpdate',[ReaderController::class,'massUpdate']);
+Route::delete('delete/{id}',[ReaderController::class,'delete']);
+Route::get('massDelete',[ReaderController::class,'massDelete']);
 
 
 
+
+Route::apiResource('category',CategoryController::class);
+
+
+Route::get('first-page',[ViewController::class,'index']);
+Route::get('second-page',[ViewController::class,'index2']);
+Route::get('third-page',[ViewController::class,'index3']);
+Route::get('view-category/{id}',[ViewController::class,'viewcategory']);
+Route::get('list-category',[ViewController::class,'listcategory']);
+Route::get('child-page',[ViewController::class,'child']);
+Route::get('child-page2',[ViewController::class,'child2']);

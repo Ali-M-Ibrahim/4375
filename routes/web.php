@@ -9,7 +9,8 @@ use App\Http\Controllers\RelationshipController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ViewController;
-
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductRController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,9 +72,9 @@ Route::get('route-13',[
     'as'=>'my-second-route'
 ]);
 Route::get('route-14/{id}',[BasicController::class,'myfunction3']);
-Route::resource('product',ResourceController::class);
-Route::resource('product1',ResourceController::class)->only(['index','create']);
-Route::resource('product2',ResourceController::class)->except(['index']);
+//Route::resource('product',ResourceController::class);
+//Route::resource('product1',ResourceController::class)->only(['index','create']);
+//Route::resource('product2',ResourceController::class)->except(['index']);
 Route::apiResource('api-resource',ApiController::class);
 Route::get('route-15',invokableController::class);
 
@@ -137,3 +138,17 @@ Route::get('view-category/{id}',[ViewController::class,'viewcategory']);
 Route::get('list-category',[ViewController::class,'listcategory']);
 Route::get('child-page',[ViewController::class,'child']);
 Route::get('child-page2',[ViewController::class,'child2']);
+
+
+Route::get('create-product',[ProductController::class,'rendercreate'])->name('product-add');
+Route::post('save-product',[ProductController::class,'saveproduct'])->name('product-save');
+Route::get('list-product',[ProductController::class,'listproduct'])->name('product-list');
+Route::get('view-product/{id}',[ProductController::class,'viewproduct'])->name('product-view');
+Route::get('edit-product/{id}',[ProductController::class,'pedit'])->name('product-edit');
+Route::put('update-product/{id}',[ProductController::class,'pupdate'])->name('product-update');
+Route::get('delete-product/{id}',[ProductController::class,'pdelete'])->name('product-delete');
+Route::delete('delete-product2/{id}',[ProductController::class,'pdelete'])->name('product-delete2');
+
+
+
+Route::resource('product',ProductRController::class);

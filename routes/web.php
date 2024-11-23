@@ -11,6 +11,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductRController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\DIController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -152,3 +155,21 @@ Route::delete('delete-product2/{id}',[ProductController::class,'pdelete'])->name
 
 
 Route::resource('product',ProductRController::class);
+
+Route::get('upload-image',[ImageController::class,'index']);
+Route::post('upload1',[ImageController::class,'store1'])->name('method1');
+Route::get('display-image/{id}',[ImageController::class,'display']);
+Route::post('upload2',[ImageController::class,'store2'])->name('method2');
+Route::post('upload3',[ImageController::class,'store3'])->name('method3');
+
+
+Route::get('beforedi',[DIController::class,'beforedi']);
+Route::get('methoddi',[DIController::class,'methoddi']);
+Route::get('constructdi1',[DIController::class,'f1'])->middleware('alikey');
+Route::get('constructdi2',[DIController::class,'f2']);
+
+//
+//Route::middleware('alikey')->group(function () {
+//    Route::get('beforedi',[DIController::class,'beforedi']);
+//    Route::get('methoddi',[DIController::class,'methoddi']);
+//});

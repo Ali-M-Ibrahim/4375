@@ -11,6 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'alikey' => 'App\Http\Middleware\CheckKey'
+        ]);
         $middleware->validateCsrfTokens(except: [
             'route-16',
             'route-17',

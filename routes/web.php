@@ -13,6 +13,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductRController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\DIController;
+use App\Http\Controllers\TraitController;
 
 
 Route::get('/', function () {
@@ -173,3 +174,6 @@ Route::get('constructdi2',[DIController::class,'f2']);
 //    Route::get('beforedi',[DIController::class,'beforedi']);
 //    Route::get('methoddi',[DIController::class,'methoddi']);
 //});
+
+Route::get('trait1',[TraitController::class,'index']);;
+Route::get('trait2',[TraitController::class,'error']);;
